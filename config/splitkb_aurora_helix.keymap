@@ -23,6 +23,19 @@
        // chain-length = <32>; // Uncomment if using only per-key LEDs.
 };
 
+/ {
+    macros {
+        zed_em_kay: zed_em_kay {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT>
+                , <&macro_tap &kp Z &kp M &kp K>
+                , <&macro_release &kp LSHFT>
+                ;
+        };
+    };
+};
 
 /* NOTE: At the time of the creation of this keymap, there are no specified codes for 'eisuu' and 'kana' input in ZMK.
 However, 'LANG1' and 'LANG2' are fully-functioning candidates for 'kana' and 'eisuu' input respectively.
@@ -64,11 +77,11 @@ As such, those are in use within the default layer at this time.*/
               };
               raise_layer {
                      // ---------------------------------------------------------------------------------------------------------------------------------
-                     // |       |       |       |       |       |       |                                    |       |       |       |       |       |       |
-                     // |   `   |   1   |   2   |   3   |   4   |   5   |                                    |   6   |   7   |   8   |   9   |   0   |  DEL  |
-                     // |       |  F1   |  F2   |  F3   |  F4   |  F5   |                                    |  F6   |   -   |   =   |   [   |   ]   |   \   |
-                     // |       |  F7   |  F8   |  F9   |  F10  |  F11  |       |                    |       |  F12  |       | PSCRN | PG_DN | PG_UP |       |
-                     // |       |       |       |       |       |       |       |                    |       |       |       | NEXT  | VOL-  | VOL+  | PLAY  |
+                     // |   /   |   *   |   -   |       |       |       |                                    |       |       |       |       |       |       |
+                     // |   7   |   8   |   9   |       |       |       |                                    |   6   |   7   |   8   |   9   |   0   |  DEL  |
+                     // |   4   |   5   |   6   |       |       |       |                                    |  F6   |   -   |   =   |   [   |   ]   |   \   |
+                     // |   1   |   2   |   3   |   +   |       |       |       |                    |       |  F12  |       | PSCRN | PG_DN | PG_UP |       |
+                     // |   0   |   .   |  RET  |   =   |       |       |       |                    |       |       |       | NEXT  | VOL-  | VOL+  | PLAY  |
                      bindings = <
                      &trans    &trans &trans &trans &trans  &trans                       &trans  &trans    &trans     &trans       &trans       &trans
                      &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4  &kp N5                       &kp N6  &kp N7    &kp N8     &kp N9       &kp N0       &kp DEL
@@ -79,17 +92,17 @@ As such, those are in use within the default layer at this time.*/
               };
               adjust_layer {
                      // ---------------------------------------------------------------------------------------------------------------------------------
-                     // |    `     |    !     |    @     |    #     |    $     |    %     |                                          |    ^     |    &     |    *     |    (     |    )     |  EP TOG  |
-                     // |  BT CLR  | BT SEL0  | BT SEL1  | BT SEL2  | BGT SEL3 | BT SEL4  |                                          | RGB EFF+ | RGB HUE+ | RGB SAT+ | RGB SPD+ | RGB BRI+ | RGB TOG  |
-                     // |  BT NXT  | OUT TOG  | OUT USB  | OUT BLE  |          |          |                                          | RGB EFF- | RGB HUE- | RGB SAT- | RGB SPD- | RGB BRI- |          |
-                     // |  BT PRV  |          |          |          |          |          |    {     |                    |    }     |          |          |          |          |          |          |
-                     // |          |          |          |          |          |          |          |                    |          |          |          |          |          |          |          |
+                     // |  BT CLR  | BT SEL0  | BT SEL1  | BT SEL2  | BGT SEL3 | BT SEL4  |                                          |    ^     |    &     |    *     |    (     |    )     |  EP TOG  |
+                     // |  BT NXT  | OUT TOG  | OUT USB  | OUT BLE  |          |          |                                          | RGB EFF+ | RGB HUE+ | RGB SAT+ | RGB SPD+ | RGB BRI+ | RGB TOG  |
+                     // |  BT PRV  |          |          |          |          |          |                                          | RGB EFF- | RGB HUE- | RGB SAT- | RGB SPD- | RGB BRI- |          |
+                     // | RGB EFF+ | RGB HUE+ | RGB SAT+ | RGB SPD+ | RGB BRI+ |  EP TOG  |          |                    |    }     |          |          |          |          |          |          |
+                     // | RGB EFF- | RGB HUE- | RGB SAT- | RGB SPD- | RGB BRI- | RGB TOG  |          |                    |          |          |          |          |          |          |          |
                      bindings = <
-                     &kp GRAVE  &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT                             &kp CARET       &kp AMPS        &kp ASTRK       &kp LPAR        &kp RPAR        &ext_power EP_TOG
-                     &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                          &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI &rgb_ug RGB_BRI &rgb_ug RGB_TOG
-                     &bt BT_NXT &out OUT_TOG &out OUT_USB &out OUT_BLE &trans       &trans                                &rgb_ug RGB_EFR &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD &rgb_ug RGB_BRD &trans
-                     &bt BT_PRV &trans       &trans       &trans       &trans       &trans       &kp LBRC        &kp RBRC &trans          &trans          &trans          &trans          &trans          &trans
-                     &trans     &trans       &trans       &trans       &trans       &trans       &trans          &trans   &trans          &trans          &trans          &trans          &trans          &trans
+                     &bt BT_CLR      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                         &kp CARET       &kp AMPS        &kp ASTRK       &kp LPAR        &kp RPAR        &ext_power EP_TOG
+                     &bt BT_NXT      &out OUT_TOG    &out OUT_USB    &out OUT_BLE    &trans          &trans                               &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI &rgb_ug RGB_BRI &rgb_ug RGB_TOG
+                     &bt BT_PRV      &trans          &trans          &trans          &trans          &trans                               &rgb_ug RGB_EFR &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD &rgb_ug RGB_BRD &trans
+                     &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI &rgb_ug RGB_BRI &ext_power EP_TOG &trans    &kp RBRC &trans          &trans          &trans          &trans          &trans          &trans
+                     &rgb_ug RGB_EFR &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_SPD &rgb_ug RGB_BRD &rgb_ug RGB_TOG   &trans    &trans   &trans          &trans          &trans          &trans          &trans          &trans
                      >;
               };
        };
