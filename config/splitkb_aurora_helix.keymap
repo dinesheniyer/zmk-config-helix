@@ -17,30 +17,168 @@
 #define RAISE  2
 #define ADJUST 3
 
-
 &led_strip {
-       chain-length = <6>;
-       // chain-length = <38>; // Uncomment if using both per-key and underglow LEDs
+       // chain-length = <6>;
+       chain-length = <38>; // Uncomment if using both per-key and underglow LEDs
        // chain-length = <32>; // Uncomment if using only per-key LEDs.
 };
 
 / {
     macros {
-        zed_em_kay: zed_em_kay {
+        m1: m1 {
+            // GIT PULL
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp Z &kp M &kp K>
-                , <&macro_release &kp LSHFT>
+                = <&macro_tap &kp G &kp I &kp T &kp SPACE &kp P &kp U &kp L &kp L>
+                ;
+        };
+
+        m2: m2 {
+            // GIT FETCH
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp G &kp I &kp T &kp SPACE &kp F &kp E &kp T &kp C &kp H>
+                ;
+        };
+
+        m3: m3 {
+            // GIT ADD
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp G &kp I &kp T &kp SPACE &kp A &kp D &kp D>
+                ;
+        };
+
+        m4: m4 {
+            // GIT COMMIT
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp G &kp I &kp T &kp SPACE &kp C &kp O &kp M &kp M &kp I &kp T>
+                ;
+        };
+
+        m5: m5 {
+            // GIT STASH
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp G &kp I &kp T &kp SPACE &kp S &kp T &kp A &kp S &kp H>
+                ;
+        };
+
+        m6: m6 {
+            // ll | grep -i
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp L &kp L &kp SPACE &kp PIPE &kp SPACE &kp G &kp R &kp E &kp P &kp SPACE &kp MINUS &kp I>
+                ;
+        };
+
+        m7: m7 {
+            // ls -ltr
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp L &kp S &kp SPACE &kp MINUS &kp L &kp T &kp R>
+                ;
+        };
+
+        m8: m8 {
+            // NVM CLEAN INSTALL
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp N &kp V &kp M &kp SPACE &kp C &kp L &kp E &kp A &kp N &kp SPACE &kp I &kp N &kp S &kp T &kp A &kp L &kp L>
+                ;
+        };
+
+        m9: m9 {
+            // COMPILE JAR FILES NOT COMPLETE
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp J &kp A &kp R &kp SPACE &kp C &kp O &kp M &kp P &kp I &kp SPACE &kp L &kp E &kp F &kp I &kp L &kp E &kp S>
+                ;
+        };
+
+        m10: m10 {
+            // DOT SLASH
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp PERIOD &kp SLASH>
+                ;
+        };
+
+        m11: m11 {
+            // MV
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp M &kp V>
+                ;
+        };
+
+        m12: m12 {
+            // DUMMY
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp D>
+                ;
+        };
+
+        m13: m13 {
+            // DUMMY
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp D>
+                ;
+        };
+
+        m14: m14 {
+            // DUMMY
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp D>
+                ;
+        };
+
+        m15: m15 {
+            // MKDIR
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp M &kp K &kp D &kp I &kp R>
+                ;
+        };
+
+        m16: m16 {
+            // CP
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp C &kp P>
+                ;
+        };
+
+        m17: m17 {
+            // CHMOD
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp C &kp H &kp M &kp O &kp D>
                 ;
         };
     };
 };
-
-/* NOTE: At the time of the creation of this keymap, there are no specified codes for 'eisuu' and 'kana' input in ZMK.
-However, 'LANG1' and 'LANG2' are fully-functioning candidates for 'kana' and 'eisuu' input respectively.
-As such, those are in use within the default layer at this time.*/
 
 / {
        keymap {
@@ -48,56 +186,56 @@ As such, those are in use within the default layer at this time.*/
 
               default_layer {
                      // ---------------------------------------------------------------------------------------------------------------------------------
-                     // | GRAVE  |   1    |   2    |   3    |   4    |   5    |                                      |   6    |   7    |   8    |   9    |   0    |  DEL   |
+                     // |  COPY  |  PASTE |  UNDO  |  REDO  |   4    |   5    |                                      |   6    |   7    |   8    |   9    |   0    |  DEL   |
                      // |  TAB   |   Q    |   W    |   E    |   R    |   T    |                                      |   Y    |   U    |   I    |   O    |   P    |  BSPC  |
                      // |  CTRL  |   A    |   S    |   D    |   F    |   G    |                                      |   H    |   J    |   K    |   L    |   ;    |   '    |
-                     // |  SHIFT |   Z    |   X    |   C    |   V    |   B    |  LBKT  |                    |  RBKT  |   N    |   M    |   ,    |   .    |   /    |  RET   |
-                     // | ADJUST |  ESC   |  ALT   |  LGUI  | EISUU  | LOWER  | SPACE  |                    |  SPACE | RAISE  |  KANA  |  LEFT  |  DOWN  |  UP    |  RIGHT |
+                     // |  SHIFT |   Z    |   X    |   C    |   V    |   B    | ADJUST |                    |  RBKT  |   N    |   M    |   ,    |   .    |   /    |  RET   |
+                     // | ADJUST |  ESC   |  ALT   |  LGUI  | EISUU  | LOWER  | LOWER  |                    |  SPACE | RAISE  |  KANA  |  LEFT  |  DOWN  |  UP    |  RIGHT |
                      bindings = <
-                     &kp GRAVE  &kp N1  &kp N2   &kp N3   &kp N4    &kp N5                               &kp N6    &kp N7    &kp N8    &kp N9     &kp N0    &kp DEL
-                     &kp TAB    &kp Q   &kp W    &kp E    &kp R     &kp T                                &kp Y     &kp U     &kp I     &kp O      &kp P     &kp BSPC
-                     &kp LCTRL  &kp A   &kp S    &kp D    &kp F     &kp G                                &kp H     &kp J     &kp K     &kp L      &kp SEMI  &kp SQT
-                     &kp LSHFT  &kp Z   &kp X    &kp C    &kp V     &kp B     &kp LBKT         &kp RBKT  &kp N     &kp M     &kp COMMA &kp PERIOD &kp SLASH &kp RET
-                     &mo ADJUST &kp ESC &kp LALT &kp LGUI &kp LANG2 &mo LOWER &kp SPACE        &kp SPACE &mo RAISE &kp LANG1 &kp LEFT  &kp DOWN   &kp UP    &kp RIGHT
+                     &kp LC(C)      &kp LC(V)  &kp LC(Z)  &kp LC(Y)  &trans    &trans                                  &kp N6    &kp N7    &kp N8    &kp N9     &kp N0    &kp DEL
+                     &kp LC(LS(1))  &kp LC(U)  &trans     &trans     &trans    &trans                                  &kp Y     &kp U     &kp I     &kp O      &kp P     &kp BSPC
+                     &m1            &m2        &m3        &m4        &m5       &m6                                     &kp H     &kp J     &kp K     &kp L      &kp SEMI  &kp SQT
+                     &m7            &m8        &m9        &m10       &m11     &m12        &mo ADJUST         &kp RBKT  &kp N     &kp M     &kp COMMA &kp PERIOD &kp SLASH &kp RET
+                     &m13          &m14        &m15       &m16       &m17      &trans     &mo RAISE          &kp SPACE &mo RAISE &kp LANG1 &kp LEFT  &kp DOWN   &kp UP    &kp RIGHT
                      >;
               };
               lower_layer {
                      // ---------------------------------------------------------------------------------------------------------------------------------
-                     // |      |      |      |      |      |      |                                  |      |      |      |      |      |      |
-                     // |  ~   |  !   |  @   |  #   |  $   |  %   |                                  |  ^   |  &   |  *   |  (   |  )   |      |
-                     // |      |      |      |      |      |      |                                  |      |  _   |  +   |  {   |  }   | PIPE |
-                     // |      |      |      |      |      |      |  (   |                    |  )   |      |      |      | HOME | END  |      |
-                     // |      |      |      |      |      |      |      |                    |      |      |      |      |      |      |      |
+                     // |   PP   |   PRV  |  NEXT  |  VOL-  |  VOL+  |  MUTE  |                                       |      |      |      |      |      |      |
+                     // |        |        |        |        |        |        |                                       |  ^   |  &   |  *   |  (   |  )   |      |
+                     // |        |        |        |        |        |        |                                       |      |  _   |  +   |  {   |  }   | PIPE |
+                     // |        |        |        |        |        |        |        |                       |  )   |      |      |      | HOME | END  |      |
+                     // |        |        |        |        |        |        |        |                       |      |      |      |      |      |      |      |
                      bindings = <
-                     &trans    &trans   &trans &trans   &trans   &trans                             &trans    &trans    &trans    &trans   &trans   &trans
-                     &kp TILDE &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT                          &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &trans
-                     &trans    &trans   &trans &trans   &trans   &trans                             &trans    &kp UNDER &kp PLUS  &kp LBRC &kp RBRC &kp PIPE
-                     &trans    &trans   &trans &trans   &trans   &trans    &kp LPAR        &kp RPAR &trans    &trans    &trans    &kp HOME &kp END  &trans
-                     &trans    &trans   &trans &trans   &trans   &trans    &trans          &trans   &trans    &trans    &trans    &trans   &trans   &trans
+                     &kp C_PP    &kp C_PREV  &kp C_NEXT  &kp C_VOL_DN  &kp C_VOL_UP  &trans                             &trans    &trans    &trans    &trans   &trans   &trans
+                     &trans      &trans      &trans      &trans        &trans        &trans                             &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &trans
+                     &trans      &trans      &trans      &trans        &trans        &trans                             &trans    &kp UNDER &kp PLUS  &kp LBRC &kp RBRC &kp PIPE
+                     &trans      &trans      &trans      &trans        &trans        &trans    &trans          &kp RPAR &trans    &trans    &trans    &kp HOME &kp END  &trans
+                     &trans      &trans      &trans      &trans        &trans        &trans    &trans          &trans   &trans    &trans    &trans    &trans   &trans   &trans
                      >;
               };
               raise_layer {
                      // ---------------------------------------------------------------------------------------------------------------------------------
-                     // |   /   |   *   |   -   |       |       |       |                                    |       |       |       |       |       |       |
-                     // |   7   |   8   |   9   |       |       |       |                                    |   6   |   7   |   8   |   9   |   0   |  DEL  |
-                     // |   4   |   5   |   6   |       |       |       |                                    |  F6   |   -   |   =   |   [   |   ]   |   \   |
-                     // |   1   |   2   |   3   |   +   |       |       |       |                    |       |  F12  |       | PSCRN | PG_DN | PG_UP |       |
-                     // |   0   |   .   |  RET  |   =   |       |       |       |                    |       |       |       | NEXT  | VOL-  | VOL+  | PLAY  |
+                     // |     /     |     *     |     -     |     (     |     $     |    DEL    |                                    |       |       |       |       |       |       |
+                     // |     7     |     8     |     9     |     )     |     &     |    BSPC   |                                    |   6   |   7   |   8   |   9   |   0   |  DEL  |
+                     // |     4     |     5     |     6     |     %     |     |     |    ESC    |                                    |  F6   |   -   |   =   |   [   |   ]   |   \   |
+                     // |     1     |     2     |     3     |     +     |     ^     |    TAB    |        |                    |       |  F12  |       | PSCRN | PG_DN | PG_UP |       |
+                     // |     0     |     .     |    RET    |     =     |     ,     |           |        |                    |       |       |       | NEXT  | VOL-  | VOL+  | PLAY  |
                      bindings = <
-                     &trans    &trans &trans &trans &trans  &trans                       &trans  &trans    &trans     &trans       &trans       &trans
-                     &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4  &kp N5                       &kp N6  &kp N7    &kp N8     &kp N9       &kp N0       &kp DEL
-                     &trans    &kp F1 &kp F2 &kp F3 &kp F4  &kp F5                       &kp F6  &kp MINUS &kp EQUAL  &kp LBKT     &kp RBKT     &kp BSLH
-                     &trans    &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &trans        &trans &kp F12 &trans    &kp PSCRN  &kp PG_DN    &kp PG_UP    &trans
-                     &trans    &trans &trans &trans &trans  &trans  &trans        &trans &trans  &trans    &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_PP
+                     &kp KP_DIVIDE &kp KP_MULTIPLY &kp KP_MINUS &kp LPAR    &kp DLLR   &kp DEL                       &trans  &trans    &trans     &trans       &trans       &trans
+                     &kp KP_N7     &kp KP_N8       &kp KP_N9    &kp RPAR    &kp AMPS   &kp BSPC                      &kp N6  &kp N7    &kp N8     &kp N9       &kp N0       &kp DEL
+                     &kp KP_N4     &kp KP_N5       &kp KP_N6    &kp PERCENT &kp PIPE   &kp ESC                       &kp F6  &kp MINUS &kp EQUAL  &kp LBKT     &kp RBKT     &kp BSLH
+                     &kp KP_N1     &kp KP_N2       &kp KP_N3    &kp KP_PLUS &kp CARET  &kp TAB  &trans        &trans &kp F12 &trans    &kp PSCRN  &kp PG_DN    &kp PG_UP    &trans
+                     &kp KP_N0     &kp KP_DOT      &kp KP_ENTER &kp EQUAL   &kp COMMA  &trans   &trans        &trans &trans  &trans    &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_PP
                      >;
               };
               adjust_layer {
-                     // ---------------------------------------------------------------------------------------------------------------------------------
-                     // |  BT CLR  | BT SEL0  | BT SEL1  | BT SEL2  | BGT SEL3 | BT SEL4  |                                          |    ^     |    &     |    *     |    (     |    )     |  EP TOG  |
-                     // |  BT NXT  | OUT TOG  | OUT USB  | OUT BLE  |          |          |                                          | RGB EFF+ | RGB HUE+ | RGB SAT+ | RGB SPD+ | RGB BRI+ | RGB TOG  |
-                     // |  BT PRV  |          |          |          |          |          |                                          | RGB EFF- | RGB HUE- | RGB SAT- | RGB SPD- | RGB BRI- |          |
-                     // | RGB EFF+ | RGB HUE+ | RGB SAT+ | RGB SPD+ | RGB BRI+ |  EP TOG  |          |                    |    }     |          |          |          |          |          |          |
-                     // | RGB EFF- | RGB HUE- | RGB SAT- | RGB SPD- | RGB BRI- | RGB TOG  |          |                    |          |          |          |          |          |          |          |
+                     // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                     // |  BT CLR  | BT SEL0  | BT SEL1  | BT SEL2  | BGT SEL3 | BT SEL4  |                                                  |    ^     |    &     |    *     |    (     |    )     |  EP TOG  |
+                     // |  BT NXT  | OUT TOG  | OUT USB  | OUT BLE  |          |          |                                                  | RGB EFF+ | RGB HUE+ | RGB SAT+ | RGB SPD+ | RGB BRI+ | RGB TOG  |
+                     // |  BT PRV  |          |          |          |          |          |                                                  | RGB EFF- | RGB HUE- | RGB SAT- | RGB SPD- | RGB BRI- |          |
+                     // | RGB EFF+ | RGB HUE+ | RGB SAT+ | RGB SPD+ | RGB BRI+ |  EP TOG  |          |                            |    }     |          |          |          |          |          |          |
+                     // | RGB EFF- | RGB HUE- | RGB SAT- | RGB SPD- | RGB BRI- | RGB TOG  |          |                            |          |          |          |          |          |          |          |
                      bindings = <
                      &bt BT_CLR      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                         &kp CARET       &kp AMPS        &kp ASTRK       &kp LPAR        &kp RPAR        &ext_power EP_TOG
                      &bt BT_NXT      &out OUT_TOG    &out OUT_USB    &out OUT_BLE    &trans          &trans                               &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_SPI &rgb_ug RGB_BRI &rgb_ug RGB_TOG
