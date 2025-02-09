@@ -221,7 +221,7 @@
                      // |    M13   |    M14   |    M15   |   M16    |   M17    |   M18    | LOWER  |                    |  SPACE | RAISE  |  KANA  |  LEFT  |  DOWN  |  UP    |  RIGHT |
                      bindings = <
                      &kp LC(C)      &kp LC(V)  &kp LC(Z)       &kp LC(Y)  &trans  &trans                                         &kp N6    &kp N7    &kp N8    &kp N9     &kp N0    &kp DEL
-                     &kp LC(LS(1))  &kp LC(U)  &kp LC(LS(L))   &m19       &20     &trans                                         &kp Y     &kp U     &kp I     &kp O      &kp P     &kp BSPC
+                     &kp LC(LS(1))  &kp LC(U)  &kp LC(LS(L))   &m19       &m20    &trans                                         &kp Y     &kp U     &kp I     &kp O      &kp P     &kp BSPC
                      &m1            &m2        &m3             &m4        &m5     &m6                                            &kp H     &kp J     &kp K     &kp L      &kp SEMI  &kp SQT
                      &m7            &m8        &m9             &m10       &m11    &m12   &mo ADJUST                    &kp RBKT  &kp N     &kp M     &kp COMMA &kp PERIOD &kp SLASH &kp RET
                      &m13          &m14        &m15            &m16       &m17    &m18   &mo RAISE                     &kp SPACE &mo RAISE &kp LANG1 &kp LEFT  &kp DOWN   &kp UP    &kp RIGHT
